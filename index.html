@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Calculadora ICMS V1.0</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+	<div id=container-geral>
+
+		<img id="icontxt" onclick="salvaTXT()" title="Clique para baixar o histórico dos cálculos realizados em tela" src="https://img.icons8.com/officexs/40/000000/txt.png">
+
+		<div id="base-icms-inter">
+
+			<p>Base do ICMS Inter</p><img title="Base do ICMS Inter = (Valor do produto + Frete + Seguro + Outras Despesas Acessórias - Descontos)" class="inform" src="https://img.icons8.com/ios-glyphs/25/000000/accounting.png">
+
+			<div id="content1">
+
+				<label for="valProduto">Valor do produto:</label>
+				<input type="number" id="valProduto" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valFrete">Frete:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valFrete" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valSeguro">Seguro:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valSeguro" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valDespesas">Outras despesas:</label>
+				<input type="number" id="valDespesas" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valDescontos">Descontos:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valDescontos" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br><br><br><br><br>
+				<button class="btncalcula" onclick="CalculaBaseICMSInter(VerificaCampo())">Calcular</button>
+				<br><br><br>
+				<label class="result" for="result_base_icms_inter">Base do ICMS Inter =</label>
+				<input type="number" id="result_base_icms_inter" value="0" readonly="" step="0.01"/>
+
+			</div>
+
+		</div>
+
+		<!--  -->
+
+		<div id="valor-icms-inter">
+
+			<p>Valor do ICMS Inter</p><img title="Valor do ICMS Inter = Base ICMS Inter * (Alíquota ICMS Inter / 100)" class="inform" src="https://img.icons8.com/ios-glyphs/25/000000/accounting.png">
+
+			<div id="content2">
+
+				<label for="baseICMSInter">Base ICMS Inter:&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="baseICMSInter" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="aliqICMSInter">Aliquota ICMS Inter:</label>
+				<input type="number" id="aliqICMSInter" value="0" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<button class="btncalcula" onclick="CalculaValorICMSInter(VerificaCampo())">Calcular</button>
+				<br><br><br>
+				<label class="result" for="result_valor_icms_inter">Valor do ICMS Inter =</label>
+				<input type="number" id="result_valor_icms_inter" value="0" readonly="" step="0.01"/>
+
+			</div>
+
+		</div>
+
+		<!--  -->
+
+		<div id="base-icms-st">
+
+			<p>Base do ICMS ST</p><img title="Base do ICMS ST = (Valor do produto + Valor do IPI + Frete + Seguro + Outras Despesas Acessórias - Descontos) * (1+(%MVA / 100))" class="inform" src="https://img.icons8.com/ios-glyphs/25/000000/accounting.png">
+
+			<div id="content3">
+
+				<label for="valProduto1">Valor do produto:</label>
+				<input type="number" id="valProduto1" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valIPI">Valor do IPI:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valIPI" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valFrete1">Frete:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valFrete1" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valSeguro1">Seguro:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valSeguro1" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valDespesas1">Outras despesas:</label>
+				<input type="number" id="valDespesas1" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valDescontos1">Descontos:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valDescontos1" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="valMVA">MVA:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+				<input type="number" id="valMVA" value="0" min="0" max="100" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br><br>
+				<button class="btncalcula" onclick="CalculaBaseICMSst(VerificaCampo())">Calcular</button>
+				<br><br><br>
+				<label class="result" for="result_base_icms_st">Base do ICMS ST =</label>
+				<input type="number" id="result_base_icms_st" value="0" readonly="" step="0.01"/>
+
+			</div>
+			
+		</div>
+
+		<!--  -->
+
+		<div id="valor-icms-st">
+
+			<p>Valor do ICMS ST</p><img title="Valor do ICMS ST = ((Base do ICMS ST * (Alíquota do ICMS Intra / 100)) - Valor do ICMS Inter)" class="inform" src="https://img.icons8.com/ios-glyphs/25/000000/accounting.png">
+
+			<div id="content4">
+				
+				<label for="baseICMSst">Base do ICMS ST:&nbsp&nbsp&nbsp</label>
+				<input type="number" id="baseICMSst" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br>
+				<label for="aliqICMSIntra">Aliquota ICMS Intra:</label>
+				<input type="number" id="aliqICMSIntra" value="0" list="aliquotasINTRA" onfocus="focado(this.id)" onblur="desfocado(this.id)" step="0.5"/>
+				<datalist id="aliquotasINTRA">
+				 	<option value="17">
+				  	<option value="17.5">
+				  	<option value="18">
+				  	<option value="20">
+				</datalist>
+				<br><br>
+				<label for="valorICMSinter">Valor do ICMS Inter:</label>
+				<input type="number" id="valorICMSinter" value="0" step="0.01" onfocus="focado(this.id)" onblur="desfocado(this.id)"/>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br>
+				<button class="btncalcula" onclick="CalculaValorICMSst(VerificaCampo())">Calcular</button>
+				<br><br><br>
+				<label class="result" for="result_valor_icms_st">Valor do ICMS ST =</label>
+				<input type="number" id="result_valor_icms_st" value="0" readonly="" step="0.01"/>
+
+			</div>
+			
+		</div>
+
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script> 
+	<script type="text/javascript" src="main.js"></script>
+
+</body>
+
+</html>
