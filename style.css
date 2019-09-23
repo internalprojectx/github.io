@@ -1,4 +1,4 @@
-body{
+	body{
 		padding: 0px;
 		margin: 0px;
 		background-color: #A9E2F3;
@@ -138,6 +138,11 @@ body{
 	}
 
 	/*Container's  FIM */
+
+	#contador{
+		text-align: center;
+		position: relative;
+	}
 
 	#icontxt{
 		width: 40px;
