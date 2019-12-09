@@ -48,7 +48,7 @@ function posicaoRandomica() {
     if (vidas > 3) {
         window.location.href = 'fim_de_jogo.html';
     }else {
-        document.getElementById("v" + vidas).src =  "imagens/coracao_vazio.png";
+        document.getElementById("v" + vidas).src =  "https://i.imgur.com/nMd66GP.png";
 
         vidas++;
     }
@@ -65,7 +65,7 @@ function posicaoRandomica() {
 
   // Criar elemento HTML (mosquito)
   var mosquito = document.createElement("img");
-  mosquito.src = "imagens/mosca.png";
+  mosquito.src = "https://i.imgur.com/6nlpgWt.png";
   mosquito.className = tamanhoAleatorio() + " " + ladoAleatorio();
   mosquito.style.left = posicaoX + "px";
   mosquito.style.top = posicaoY + "px";
